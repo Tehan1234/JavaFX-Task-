@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="390.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
+   <children>
+      <ImageView fitHeight="394.0" fitWidth="600.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/DashBoardImage.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="121.0" layoutY="24.0" opacity="0.96" prefHeight="48.0" prefWidth="335.0" style="-fx-background-color: #808e9b;" text="Contact Manager" textFill="#1e1414">
+         <font>
+            <Font name="System Bold Italic" size="29.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="148.0" onAction="#btnAddFormOnAction" opacity="0.79" prefHeight="38.0" prefWidth="226.0" style="-fx-background-color: #485460;" text="Add Customer Form" textFill="#4a1616">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="323.0" onAction="#btnSearchFormOnAction" opacity="0.79" prefHeight="38.0" prefWidth="226.0" style="-fx-background-color: #485460;" text="Search Customer Form" textFill="#4a1616">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="339.0" layoutY="148.0" onAction="#btnViewFormOnAction" opacity="0.79" prefHeight="38.0" prefWidth="226.0" style="-fx-background-color: #485460;" text="View  Customer Form" textFill="#4a1616">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="339.0" layoutY="323.0" onAction="#btnDeleteFormOnAction" opacity="0.79" prefHeight="38.0" prefWidth="226.0" style="-fx-background-color: #485460;" text="Delete Customer Form" textFill="#4a1616">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="177.0" layoutY="240.0" onAction="#btnUpdateFormOnAction" opacity="0.79" prefHeight="38.0" prefWidth="226.0" style="-fx-background-color: #485460;" text="Update Customer Form" textFill="#4a1616">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

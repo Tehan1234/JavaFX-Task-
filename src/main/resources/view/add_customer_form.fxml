@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="398.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="602.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/addCustomerimg.jpg" />
+         </image></ImageView>
+      <Label alignment="CENTER" layoutX="133.0" layoutY="21.0" opacity="0.51" prefHeight="48.0" prefWidth="335.0" style="-fx-background-color: #4b7bec;" text="Add Customer Form" textFill="#1e1414">
+         <font>
+            <Font name="System Bold Italic" size="29.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtId" focusColor="#e2e4eb" layoutX="14.0" layoutY="94.0" opacity="0.81" prefHeight="25.0" prefWidth="106.0" promptText="ID" style="-fx-background-color: #4b6584;" unFocusColor="#e8dfdf">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtName" layoutX="153.0" layoutY="174.0" opacity="0.81" prefHeight="25.0" prefWidth="196.0" promptText="Name" style="-fx-background-color: #4b6584;" unFocusColor="#f5f5f5">
+         <font>
+            <Font name="Baskerville Old Face" size="17.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" layoutX="390.0" layoutY="174.0" opacity="0.82" prefHeight="34.0" prefWidth="196.0" promptText="Address" style="-fx-background-color: #4b6584;" unFocusColor="#e4dddd">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtContactNo" layoutX="22.0" layoutY="288.0" opacity="0.82" prefHeight="34.0" prefWidth="196.0" promptText="Contact Number" style="-fx-background-color: #4b6584;" unFocusColor="#e8e4e4">
+         <font>
+            <Font name="Baskerville Old Face" size="17.0" />
+         </font></JFXTextField>
+      <Label layoutX="14.0" layoutY="58.0" prefHeight="28.0" prefWidth="64.0" text="ID :-" textFill="#fcf7f7">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="139.0" prefHeight="28.0" prefWidth="64.0" text="Title :-" textFill="#fcf7f7">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="139.0" prefHeight="28.0" prefWidth="64.0" text="Name:-" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="390.0" layoutY="139.0" prefHeight="28.0" prefWidth="95.0" text="Address:-" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="249.0" prefHeight="28.0" prefWidth="142.0" text="Contact Number:-" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="271.0" layoutY="249.0" prefHeight="28.0" prefWidth="142.0" text="Date of Birth:-" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dob" layoutX="271.0" layoutY="288.0" prefHeight="34.0" prefWidth="175.0" style="-fx-background-color: #4b6584;" />
+      <JFXButton fx:id="btnAdd" layoutX="455.0" layoutY="344.0" onAction="#btnAddOnAction" opacity="0.58" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #777777;" text="Add" textFill="#861818">
+         <font>
+            <Font name="System Italic" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="46.0" layoutY="344.0" onAction="#btnBackOnAction" opacity="0.58" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #777777;" text="Back" textFill="#861818">
+         <font>
+            <Font name="System Italic" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="244.0" layoutY="344.0" onAction="#btnClearAllOnAction" opacity="0.58" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: #777777;" text="clear" textFill="#861818">
+         <font>
+            <Font name="System Italic" size="19.0" />
+         </font>
+      </JFXButton>
+      <ComboBox fx:id="cmbTitles" layoutX="14.0" layoutY="174.0" prefHeight="34.0" prefWidth="106.0" promptText="Titles" style="-fx-background-color: #4b6584;" />
+   </children>
+</AnchorPane>
