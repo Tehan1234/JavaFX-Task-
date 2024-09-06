@@ -26,4 +26,6 @@ public class Customer {
     private  String  contact;
 
     private LocalDate dob;
+
+
 }

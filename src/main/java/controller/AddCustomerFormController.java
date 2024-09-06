@@ -44,17 +44,20 @@ public class AddCustomerFormController implements Initializable {
 
     private static int nextID = 100;
 
+    CustomerService service = new CustomerController();
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String id = txtId.getText();
+        String title = cmbTitles.getValue();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
         String contact = txtContactNo.getText();
-        String birth = String.valueOf(dob.getValue());
+        LocalDate birth = dob.getValue();
 
-        if (isValidPhoneNumber(contact) && isValidBirthday(birth)) {
-            List<Customer> customerList = DBConnection.getInstance().getConnection();
-            Customer customer = new Customer(txtId.getText(),  cmbTitles.getValue(), txtName.getText(), txtAddress.getText(), txtContactNo.getText(), dob.getValue());
-            customerList.add(customer);
-            System.out.println(customer);
-
+        Customer customer = new Customer(id,title,name,address,contact,birth);
+        boolean isAdded = service.addCustomer(customer);
+        if (isAdded){
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Success");
             successAlert.setHeaderText(null);
@@ -75,24 +78,14 @@ public class AddCustomerFormController implements Initializable {
                 }
             });
 
-        } else if (!isValidPhoneNumber(contact)) {
-            // Show phone number error
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Invalid Phone Number");
-            errorAlert.setHeaderText(null);
-            errorAlert.setContentText("Enter Phone Number Again");
-            errorAlert.showAndWait();
-            txtContactNo.setText("");
-
-        } else {
-            // Show birthday error
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Invalid Birthday");
-            errorAlert.setHeaderText(null);
-            errorAlert.setContentText("Set the Birthday Again");
-            errorAlert.showAndWait();
-            dob.setValue(null);
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Operation Failed");
+            alert.setContentText("Customer Not Added!!!.");
         }
+
+
     }
 
     @FXML
@@ -101,38 +94,8 @@ public class AddCustomerFormController implements Initializable {
         dashForm.show();
     }
 
-    private boolean isValidPhoneNumber(String number) {
-        if (number.charAt(0) != '0') {
-            return false;
-        }
-        if (number.length() != 10) {
-            return false;
-        }
-        for (int i = 0; i < number.length(); i++) {
-            if (!Character.isDigit(number.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isValidBirthday(String birth) {
-        try {
-            LocalDate currentDate = LocalDate.now();
-            LocalDate birthDate = LocalDate.parse(birth);
-            return !birthDate.isAfter(currentDate);
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*ObservableList<String> titles = FXCollections.observableArrayList();
-        titles.add("Mr.");
-        titles.add("Mrs.");
-        titles.add("Miss");
-        cmbTitle.setItems(titles);*/
         cmbTitles.getItems().addAll("Mr","Mrs","Miss");
 
         txtId.setText(generateId());

@@ -25,25 +25,27 @@ public class SearchCustomerFormController  {
 
     public ComboBox <String> cmbTitles;
     @FXML
-    private DatePicker DOB;
+    public  DatePicker DOB;
 
     @FXML
     private JFXComboBox<String> cmbTitle;
 
     @FXML
-    private JFXTextField txtAddress;
+   public  JFXTextField txtAddress;
 
     @FXML
-    private JFXTextField txtContactNo;
+    public  JFXTextField txtContactNo;
 
     @FXML
-    private JFXTextField txtId;
+    public  JFXTextField txtId;
 
     @FXML
-    private JFXTextField txtName;
+    public  JFXTextField txtName;
 
     @FXML
-    private JFXTextField txtSearchBar;
+    public  JFXTextField txtSearchBar;
+
+    CustomerService  service = new CustomerController();
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
@@ -55,31 +57,34 @@ public class SearchCustomerFormController  {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-        List<Customer> customerList = DBConnection.getInstance().getConnection();
-        for (Customer customer : customerList){
-            if (txtSearchBar.getText().equals(customer.getId())){
-                txtId.setText(customer.getId());
-                txtName.setText(customer.getName());
-                txtAddress.setText(customer.getAddress());
-                txtContactNo.setText(customer.getContact());
-                cmbTitles.setValue(String.valueOf(customer.getTitle()));
-                DOB.setValue(customer.getDob());
-            }else {
-                clearAll();
-                Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
-                confirmDialog.setTitle("No Customer Found");
-                confirmDialog.setHeaderText(null);
-                confirmDialog.setContentText("Do You Want to Search Another Customer?");
+        String custID = txtSearchBar.getText();
+        boolean isSearch = service.searchCustomer(custID);
+        if (isSearch){
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Success");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("Customer Search  Successfully");
+            successAlert.showAndWait();
 
-                confirmDialog.showAndWait().ifPresent(response -> {
-                    if (response == ButtonType.OK) {
-                       txtSearchBar.setText(null);
-                    } else {
-                        // Close the current window
-                        ((Stage) txtSearchBar.getScene().getWindow()).hide();
-                    }
-                });
-            }
+            // Show confirmation dialog
+            Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmDialog.setTitle("Add Another?");
+            confirmDialog.setHeaderText(null);
+            confirmDialog.setContentText("Do You Want to Search Another Customer?");
+            confirmDialog.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    clearAll();
+                } else {
+                    // Close the current window
+                    ((Stage) txtId.getScene().getWindow()).hide();
+                }
+            });
+
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Customer cannot search");
+            alert.setContentText(" No Customer Found  !!!.");
         }
 
 
