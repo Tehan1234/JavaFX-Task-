@@ -8,7 +8,7 @@ public interface CustomerService {
 
     boolean addCustomer(Customer customer);
 
-    boolean   searchCustomer(String custID);
+    Customer searchCustomer(String custID);
 
     boolean updateCustomer(Customer customer);
 

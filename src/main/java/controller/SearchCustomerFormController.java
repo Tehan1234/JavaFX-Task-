@@ -58,8 +58,16 @@ public class SearchCustomerFormController  {
     @FXML
     void btnSearchOnAction(ActionEvent event) {
         String custID = txtSearchBar.getText();
-        boolean isSearch = service.searchCustomer(custID);
-        if (isSearch){
+        Customer customer = service.searchCustomer(custID);
+        if (Objects.equals(txtSearchBar.getText(), customer.getId())){
+
+            txtId.setText(customer.getId());
+            cmbTitles.setValue(customer.getTitle());
+            txtName.setText(customer.getName());
+            txtAddress.setText(customer.getAddress());
+            txtContactNo.setText(customer.getContact());
+            DOB.setValue(customer.getDob());
+
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Success");
             successAlert.setHeaderText(null);
@@ -76,7 +84,7 @@ public class SearchCustomerFormController  {
                     clearAll();
                 } else {
                     // Close the current window
-                    ((Stage) txtId.getScene().getWindow()).hide();
+                    ((Stage) txtId.getScene().getWindow()).show();
                 }
             });
 
